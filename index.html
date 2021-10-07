@@ -22,14 +22,15 @@
                 }
 
                 function onPlayerStateChange(event) {
-                    if(videoFinished(event)) {
+                    if(isVideoFinished(event)) {
                         destroyVideo();
                     }
                 }
                 function destroyVideo() {
                     player.destroy();
+                    //aca deberia inicial el juego
                 }
-                function videoFinished(event) {
+                function isVideoFinished(event) {
                     return event.data === 0;
                 }
 
