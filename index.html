@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <body>
+    <div id="player"></div>
+            <script src="http://www.youtube.com/player_api"></script>
+            <script>
+                let player;
+
+                function onYouTubePlayerAPIReady() {
+                    initializeVideo();
+                }
+
+                function initializeVideo() {
+                    player = new YT.Player('player', {
+                        width: '640',
+                        height: '390',
+                        videoId: 'D_44KFOjyK8',
+                        events: {
+                            onStateChange: onPlayerStateChange
+                        }
+                    });
+                }
+
+                function onPlayerStateChange(event) {
+                    if(videoFinished(event)) {
+                        destroyVideo();
+                    }
+                }
+                function destroyVideo() {
+                    player.destroy();
+                }
+                function videoFinished(event) {
+                    return event.data === 0;
+                }
+
+            </script>
+
+    </body>
+</html>
